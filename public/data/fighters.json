@@ -1,0 +1,180 @@
+{
+	"fighters": [
+		{
+			"id": 1,
+			"name": "Jon Jones",
+			"nickname": "Bones",
+			"fullname": "Jon \"Bones\" Jones",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-03/JONES_JON_L_BELT_03_04.png?itok=P6J6DQpm",
+			"record": "27-1-1",
+			"height": "6' 4\"",
+			"height_cm": "193",
+			"weight": "248",
+			"weight_kg": "112",
+			"weight_class": "Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Muay thai"
+			],
+			"wins": 21,
+			"losses": 1,
+			"latestFight": {
+				"name": "UFC 285: Jones vs. Gane",
+				"date": "04 Mar 2023",
+				"result": "win",
+				"method": "Submission (Guillotine choke)",
+				"round": "1",
+				"time": "2:04",
+				"opponent": "Cyril Gane"
+			}
+		},
+		{
+			"id": 2,
+			"name": "Tom Aspinall",
+			"nickname": "",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-07/ASPINALL_TOM_L_07-22.png?itok=K7JDkSGN",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 3,
+			"name": "Sergei Pavlovich",
+			"nickname": "",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-11/PAVLOVICH_SERGEI_L_11-11.png?itok=b_wm1tN_",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 4,
+			"name": "Francis Ngannou",
+			"nickname": "The Predator",
+			"fullname": "Jon \"Bones\" Jones",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-01/NGANNOU_FRANCIS_L_03-27.png?itok=s4MVBS7x",
+			"record": "27-1-1",
+			"height": "6' 4\"",
+			"height_cm": "193",
+			"weight": "248",
+			"weight_kg": "112",
+			"weight_class": "Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Muay thai"
+			],
+			"wins": 21,
+			"losses": 1,
+			"latestFight": {
+				"name": "UFC 285: Jones vs. Gane",
+				"date": "04 Mar 2023",
+				"result": "win",
+				"method": "Submission (Guillotine choke)",
+				"round": "1",
+				"time": "2:04",
+				"opponent": "Cyril Gane"
+			}
+		},
+		{
+			"id": 5,
+			"name": "Charles Oliveira",
+			"nickname": "Do Bronxs",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-06/OLIVEIRA_CHARLES_L_06-10.png?itok=vKMJlOYL",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 6,
+			"name": "Alex Pereira",
+			"nickname": "Poatan",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-04/PEREIRA_ALEX_L_BELT_04-08.png?itok=-m53j6rb",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		}
+	],
+	"Cards": {},
+	"P4P": {}
+}
