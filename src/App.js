@@ -8,8 +8,8 @@ const capitaliseFirstLetter = (string) => {
 
 function Navigation() {
   return (
-    <nav className='bg-gradient-to-br from-secondary1 via-yellow-500 via-red-500 to-secondary2 p-0.5 w-48 mx-auto mt-4'>
-      <ul className='px-auto flex justify-evenly py-4 bg-gradient-to-r from-primary1 to-primary2'>
+    <nav className='bg-gradient-to-br from-secondary1 via-yellow-500 via-red-500 to-secondary2 p-0.5 w-48 mx-auto mt-4 rounded-full'>
+      <ul className='px-auto flex justify-evenly py-4 bg-gradient-to-r from-primary1 to-primary2 rounded-full'>
         <Link className='hover:text-orange-600 font-bold' to="/">Home</Link>
         <Link className='hover:text-orange-600 font-bold' to="/favourites">Favourites</Link>
       </ul>
@@ -106,7 +106,7 @@ function Cards({ fightersData, weightClass }) {
   return (
     <div className='mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center'>
       {filteredFighters.map((fighter) => (
-        <div className='w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 bg-gray-900 hover:bg-blue-500 border border-black-400 hover:border-slate-400 hover:shadow-md rounded-lg hover:-translate-y-3 transition-transform p-2' key={fighter.id}>
+        <div className='w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 hover:bg-blue-500 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/100 rounded-lg hover:-translate-y-3 transition-transform p-2' key={fighter.id}>
           <Link to={`/profile/${fighter.id}`}>
             <div className='flex flex-col h-80'>
               <div className='w-32 self-center'>
@@ -151,6 +151,7 @@ export function Favourites() {
 export function Profile() {
   const { id } = useParams();
   const [fighterData, setFighterData] = useState(null);
+  let favouritesList = [];
 
   useEffect(() => {
     fetch(`/data/fighter${id}.json`)
@@ -171,6 +172,17 @@ export function Profile() {
         </div>
       )
     }
+
+    const addToFavourites = () => {
+      localStorage.setItem(fighterData.name, id)
+      console.log(id);
+      favouritesList.push(id)
+      console.log(favouritesList);
+    }
+    const removeFromFavourites = () => {
+      localStorage.removeItem(fighterData.name);
+      console.log(favouritesList);
+    }
     return (
       <>
         <Navigation />
@@ -180,6 +192,8 @@ export function Profile() {
               <a href="#bio"><img className='hover:bg-gradient-to-r from-secondary1 to-secondary2 hover:-translate-y-3 transition-transform w-12 md:w-16 mb-6 border-t rounded-full text-white' src="/arrow_downward.svg" alt="" /></a>
             </div>
             <h1 className='text-center'>{fighterData.name}</h1>
+            <span><button onClick={((id) => addToFavourites(id))}>Add to favourites</button></span>
+            <span><button onClick={((id) => removeFromFavourites(id))}>Remove from favourites</button></span>
             <div className='flex flex-col md:flex-row gap-4'>
               <div className='p-6 md:w-1/2 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3 id='bio'>Bio</h3>
