@@ -36,6 +36,10 @@
     transform: rotate(360deg);
   }
 }
+/* Header */
+.title {
+  font-size: 96px;
+}
 
 /* Cards */
 .cardSection {

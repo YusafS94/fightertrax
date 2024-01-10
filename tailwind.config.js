@@ -12,6 +12,9 @@ module.exports = {
         secondary1: "#ef4444",
         secondary2: "#f97316",
       },
+      screens: {
+        'xs': '480px',
+      },
     },
   },
   plugins: [
