@@ -1,9 +1,9 @@
 {
-    "id": 6,
-    "name": "Alex Pereira",
+    "id": 8,
+    "name": "Leon Edwards",
     "nickname": "Bones",
     "fullname": "Jon \"Bones\" Jones",
-    "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-04/PEREIRA_ALEX_L_BELT_04-08.png?itok=-m53j6rb",
+    "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-12/EDWARDS_LEON_BELT_L_12-16.png?itok=RVcuzrpG",
     "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
     "record": "21-1-0",
     "association": "Jackson-Wink MMA",
@@ -16,7 +16,7 @@
     "height_cm": "193",
     "weight": "205",
     "weight_kg": "93",
-    "weight_class": "Light Heavyweight",
+    "weight_class": "Welterweight",
     "college": "Iowa Central",
     "degree": "Associates Degree",
     "summary": [

@@ -127,7 +127,7 @@
 			"height_cm": "196",
 			"weight": "262",
 			"weight_kg": "119",
-			"weight_class": "Heavyweight",
+			"weight_class": "Lightweight",
 			"summary": [
 				"Wrestling",
 				"Brazilian jiu-jitsu",
@@ -156,7 +156,181 @@
 			"height_cm": "196",
 			"weight": "262",
 			"weight_kg": "119",
-			"weight_class": "Heavyweight",
+			"weight_class": "Light Heavyweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 7,
+			"name": "Sean Strickland",
+			"nickname": "Poatan",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-09/STRICKLAND_SEAN_L_BELTMOCK.png?itok=QLnBsSSa",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Middleweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 8,
+			"name": "Leon Edwards",
+			"nickname": "Rocky",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-12/EDWARDS_LEON_BELT_L_12-16.png?itok=RVcuzrpG",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Welterweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 9,
+			"name": "Islam Makhachev",
+			"nickname": "",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-10/MAKHACHEV_ISLAM_BELT_L_10-21.png?itok=glu3eHJa",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Lightweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 10,
+			"name": "Alexander Volkanovski",
+			"nickname": "The Great",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-07/VOLKANOVSKI_ALEXANDER_L_BELT_07-08.png?itok=FewlqaNo",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Featherweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 11,
+			"name": "Sean O'Malley",
+			"nickname": "Sugar",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-08/OMALLEY_SEAN_L_BELTMOCK.png?itok=T1J6X_70",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Bantamweight",
+			"summary": [
+				"Wrestling",
+				"Brazilian jiu-jitsu",
+				"Boxing"
+			],
+			"wins": 14,
+			"losses": 3,
+			"latestFight": {
+				"name": "UFC 295",
+				"date": "11 Nov 2023",
+				"result": "win",
+				"method": "KO (punches)",
+				"round": "1",
+				"time": "1:09",
+				"opponent": "Sergei Pavlovich"
+			}
+		},
+		{
+			"id": 12,
+			"name": "Alexandre Pantoja",
+			"nickname": "The Cannibal",
+			"fullname": "Tom \"\" Aspinall",
+			"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-12/PANTOJA_ALEXANDRE_L_12-16.png?itok=KUFPMuog",
+			"record": "14-3-0",
+			"height": "6' 5\"",
+			"height_cm": "196",
+			"weight": "262",
+			"weight_kg": "119",
+			"weight_class": "Flyweight",
 			"summary": [
 				"Wrestling",
 				"Brazilian jiu-jitsu",
