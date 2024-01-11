@@ -5,6 +5,8 @@ import { Link, useParams } from "react-router-dom";
 const capitaliseFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
+const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
 
 function Navigation() {
   return (
@@ -31,7 +33,7 @@ function Header(props) {
         {/* <Form /> */}
         <div className='flex flex-col items-center gap-2 mt-4'>
           {/* <p>View all fighters</p> */}
-          <a href="#heavyweight"><img className='hover:bg-gradient-to-r from-secondary1 to-secondary2 hover:-translate-y-3 transition-transform w-12 md:w-16 border-t rounded-full text-white' src="/arrow_downward.svg" alt="" /></a>
+          <a href="#cards"><img className='animate-bounce hover:bg-gradient-to-r from-secondary1 to-secondary2 hover:-translate-y-3 transition-transform w-12 md:w-16 border-t rounded-full text-white' src="/arrow_downward.svg" alt="" /></a>
         </div>
       </div>
     </header>
@@ -77,22 +79,24 @@ function Data() {
       <>
         {/* <h2>Pound-for-Pound</h2>
         <Cards fightersData={allFightersData.fighters} weightClass="Pound-for-Pound" /> */}
-        <h2 id='heavyweight'>Heavyweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Heavyweight" />
-        <h2>Light Heavyweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Light Heavyweight" />
-        <h2>Middleweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Middleweight" />
-        <h2>Welterweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Welterweight" />
-        <h2>Lightweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Lightweight" />
-        <h2>Featherweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Featherweight" />
-        <h2>Bantamweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Bantamweight" />
-        <h2>Flyweight</h2>
-        <Cards fightersData={allFightersData.fighters} weightClass="Flyweight" />
+        <div id='cards'>
+          <h2>Heavyweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Heavyweight" />
+          <h2>Light Heavyweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Light Heavyweight" />
+          <h2>Middleweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Middleweight" />
+          <h2>Welterweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Welterweight" />
+          <h2>Lightweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Lightweight" />
+          <h2>Featherweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Featherweight" />
+          <h2>Bantamweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Bantamweight" />
+          <h2>Flyweight</h2>
+          <Cards fightersData={allFightersData.fighters} weightClass="Flyweight" />
+        </div>
       </>
     );
   } else {
@@ -106,11 +110,11 @@ function Cards({ fightersData, weightClass }) {
   return (
     <div className='mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center'>
       {filteredFighters.map((fighter) => (
-        <div className='w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 bg-gradient-to-br from-blue-900 via-indigo-700 to-blue-900 hover:bg-blue-500 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/100 rounded-lg hover:-translate-y-3 transition-transform p-2' key={fighter.id}>
+        <div className='w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 hover:bg-indigo-900 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighter.id}>
           <Link to={`/profile/${fighter.id}`}>
             <div className='flex flex-col h-80'>
               <div className='w-32 self-center'>
-                <img alt={`Profile of ${fighter.name}`} className='max-w-full rounded-t-lg' src={fighter.img} />
+                <img alt={`Profile of ${fighter.name}`} className='group-hover:-translate-y-8 group-hover:scale-125 duration-200 ease-in-out transition-transform max-w-full rounded-t-lg' src={fighter.img} />
               </div>
               <div className='text-left flex flex-col justify-start'>
                 <div className='flex flex-col relative'>
@@ -153,6 +157,15 @@ export function Profile() {
   const [fighterData, setFighterData] = useState(null);
   let favouritesList = [];
 
+  function Ping() {
+    return (
+      <span class="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+      </span>
+    )
+  }
+
   useEffect(() => {
     fetch(`/data/fighter${id}.json`)
       .then((response) => response.json())
@@ -164,7 +177,12 @@ export function Profile() {
       return (
         <div className='md:w-3/12 border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
           <div className='border-b'>
-            <a className='hover:underline bg-green-700 rounded-lg px-2 float-end' href={`https://www.sherdog.com${fighterData.fights[arrayNum].url}`} target='blank'>View fight card</a>
+            <span className='relative inline-flex float-right'>
+              <a className='flex items-center hover:underline bg-transparent text-bold rounded-lg px-2 float-end' href={`https://www.sherdog.com${fighterData.fights[arrayNum].url}`} target='blank'>View fight card
+              </a>
+              <Ping />
+            </span>
+
             <h4>{fighterData.fights[arrayNum].name}</h4>
             <p>{capitaliseFirstLetter(fighterData.fights[arrayNum].result)} - {fighterData.fights[arrayNum].method}</p>
           </div>
@@ -172,6 +190,7 @@ export function Profile() {
         </div>
       )
     }
+
 
     const addToFavourites = () => {
       localStorage.setItem(fighterData.name, id)
@@ -188,8 +207,7 @@ export function Profile() {
         <Navigation />
         <section className=''>
           <div className='mx-8 mb-8'>
-            <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-screen bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
-              <a href="#bio"><img className='hover:bg-gradient-to-r from-secondary1 to-secondary2 hover:-translate-y-3 transition-transform w-12 md:w-16 mb-6 border-t rounded-full text-white' src="/arrow_downward.svg" alt="" /></a>
+            <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-96 bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
             </div>
             <h1 className='text-center'>{fighterData.name}</h1>
             <span><button onClick={((id) => addToFavourites(id))}>Add to favourites</button></span>
