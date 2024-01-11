@@ -312,7 +312,7 @@
 			"latestFight": {
 				"name": "UFC 295",
 				"date": "11 Nov 2023",
-				"result": "win",
+				"result": "loss",
 				"method": "KO (punches)",
 				"round": "1",
 				"time": "1:09",
@@ -341,7 +341,7 @@
 			"latestFight": {
 				"name": "UFC 295",
 				"date": "11 Nov 2023",
-				"result": "win",
+				"result": "loss",
 				"method": "KO (punches)",
 				"round": "1",
 				"time": "1:09",

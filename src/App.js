@@ -127,7 +127,24 @@ function Cards({ fightersData, weightClass }) {
                   <span className='absolute right-0'>{fighter.nickname ? `'${fighter.nickname}'` : fighter.nickname}</span>
                 </div>
                 <div className='border-t'>
-                  <p><span className='bg-green-500 px-2 rounded-lg'>{capitaliseFirstLetter(fighter.latestFight.result)}</span> - {fighter.latestFight.opponent}</p>
+
+                  {/* <p><span className='bg-green-500 px-2 rounded-lg'>{capitaliseFirstLetter(fighter.latestFight.result)}</span> vs {fighter.latestFight.opponent}</p> */}
+
+                  <p>
+                    {fighter.latestFight.result === "win" ? (
+                      <span className='bg-green-500 px-2 rounded-lg'>
+                        {capitaliseFirstLetter(fighter.latestFight.result)}
+                      </span>
+                    ) : (
+                      <span className='bg-red-500 px-2 rounded-lg'>
+                        {capitaliseFirstLetter(fighter.latestFight.result)}
+                      </span>
+                    )}
+                    &nbsp;
+                    vs {fighter.latestFight.opponent}
+                  </p>
+
+
                   <p>{fighter.latestFight.name}</p>
                   <div className='flex flex-row justify-center'>
                     <p className='text-xs'>{fighter.latestFight.method} - <span>Round {fighter.latestFight.round}</span></p>
