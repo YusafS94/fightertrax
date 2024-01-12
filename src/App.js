@@ -123,7 +123,7 @@ function Cards({ fightersData, weightClass }) {
                     <span className='bg-green-500 px-2 rounded-lg w-auto'>{fighter.wins}</span>
                     <span className='bg-red-700 px-2 rounded-lg w-auto'>{fighter.losses}</span>
                   </div>
-                  <span className='absolute right-0'>{fighter.nickname ? `'${fighter.nickname}'` : fighter.nickname}</span>
+                  <span className='absolute right-0 bottom-0'>{fighter.nickname ? `'${fighter.nickname}'` : fighter.nickname}</span>
                 </div>
                 <div className='border-t'>
 
@@ -145,8 +145,9 @@ function Cards({ fightersData, weightClass }) {
 
 
                   <p>{fighter.latestFight.name}</p>
-                  <div className='flex flex-row justify-center'>
+                  <div className='flex flex-col justify-center items-center'>
                     <p className='text-xs'>{fighter.latestFight.method} - <span>Round {fighter.latestFight.round}</span></p>
+                    <p className='text-xs'><span>Time: {fighter.latestFight.time}</span></p>
                   </div>
                 </div>
               </div>
@@ -198,15 +199,25 @@ export function Favorites() {
 export function Profile() {
   const { id } = useParams();
   const [fighterData, setFighterData] = useState(null);
+  // Get favorites object from localStorage or create an empty favorites object
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+  // Check if the fighter is already in favorites
+  // const isAlreadyFavorited = favorites.hasOwnProperty(id);
+  // Use State for isAlreadyFavorited so button component can be updated based on true or false
+  const [isAlreadyFavorited, setIsAlreadyFavorited] = useState(false);
 
   function Ping() {
     return (
       <span className="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
-        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-        <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400"></span>
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-teal-500"></span>
       </span>
     )
   }
+
+  useEffect(() => {
+    setIsAlreadyFavorited(favorites.hasOwnProperty(id));
+  }, [favorites, id]);
 
   useEffect(() => {
     fetch(`/data/fighter${id}.json`)
@@ -215,14 +226,15 @@ export function Profile() {
   }, [id]);
 
   if (fighterData) {
-    function FightCard({ arrayNum }) {
+    function FightCard({ arrayNum, latest }) {
       return (
-        <div className='md:w-3/12 border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+        <div className='relative md:w-3/12 border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+          {/* Conditional/Ternary operator that returns Ping component if latest is true */}
+          {latest == true ? <Ping /> : null}
           <div className='border-b'>
             <span className='relative inline-flex float-right'>
               <a className='flex items-center hover:underline bg-transparent text-bold rounded-lg px-2 float-end' href={`https://www.sherdog.com${fighterData.fights[arrayNum].url}`} target='blank'>View fight card
               </a>
-              <Ping />
             </span>
 
             <h4>{fighterData.fights[arrayNum].name}</h4>
@@ -236,11 +248,6 @@ export function Profile() {
 
     // To add a fighter to favorites
     const addToFavorites = () => {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
-
-      // Check if the fighter is already in favorites
-      const isAlreadyFavorited = favorites.hasOwnProperty(id);
-
       // If not already favorited, add to favorites
       if (!isAlreadyFavorited) {
         const newFavorite = {
@@ -249,16 +256,12 @@ export function Profile() {
 
         // Update favorites in localStorage
         localStorage.setItem('favorites', JSON.stringify({ ...favorites, ...newFavorite }));
+        setIsAlreadyFavorited(true); // Update the state
       }
     };
 
     // To remove a fighter from favorites
     const removeFromFavorites = () => {
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
-
-      // Check if the fighter is already in favorites
-      const isAlreadyFavorited = favorites.hasOwnProperty(id);
-
       // If already favorited, remove from favorites
       if (isAlreadyFavorited) {
         // Create a copy of the favorites object without the specified ID
@@ -266,10 +269,19 @@ export function Profile() {
 
         // Update favorites in localStorage
         localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-
-        console.log(updatedFavorites); // Log the updated list of favorites
+        setIsAlreadyFavorited(false); // Update the state
       }
     };
+
+    function FavoriteButton({ isAlreadyFavorited, addToFavorites, removeFromFavorites }) {
+      return (
+        <span>
+          <div className='w-8' onClick={isAlreadyFavorited ? removeFromFavorites : addToFavorites}>
+            <img src={isAlreadyFavorited ? "/favorited.svg" : "/unfavorited.svg"} alt="" />
+          </div>
+        </span>
+      );
+    }
 
     return (
       <>
@@ -279,8 +291,12 @@ export function Profile() {
             <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-96 bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
             </div>
             <h1 className='text-center'>{fighterData.name}</h1>
-            <span><button onClick={addToFavorites}>Add to favorites</button></span>
-            <span><button onClick={removeFromFavorites}>Remove from favorites</button></span>
+            <FavoriteButton
+              isAlreadyFavorited={isAlreadyFavorited}
+              addToFavorites={addToFavorites}
+              removeFromFavorites={removeFromFavorites}
+            />
+
             <div className='flex flex-col md:flex-row gap-4'>
               <div className='p-6 md:w-1/2 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3 id='bio'>Bio</h3>
@@ -300,10 +316,10 @@ export function Profile() {
           <div className='bg-gradient-to-r from-secondary1 to-secondary2 p-4 mx-8 mb-8 rounded-lg'>
             <h3>Recent fights</h3>
             <div className='flex flex-col md:flex-row gap-4'>
-              <FightCard arrayNum="0" />
-              <FightCard arrayNum="1" />
-              <FightCard arrayNum="2" />
-              <FightCard arrayNum="2" />
+              <FightCard arrayNum="0" latest={true} />
+              <FightCard arrayNum="1" latest={false} />
+              <FightCard arrayNum="2" latest={false} />
+              <FightCard arrayNum="2" latest={false} />
             </div>
           </div>
         </section>
