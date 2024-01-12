@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 const capitaliseFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
-const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
 
 function Navigation() {
@@ -13,7 +12,7 @@ function Navigation() {
     <nav className='bg-gradient-to-br from-secondary1 via-yellow-500 via-red-500 to-secondary2 p-0.5 w-48 mx-auto mt-4 rounded-full'>
       <ul className='px-auto flex justify-evenly py-4 bg-gradient-to-r from-primary1 to-primary2 rounded-full'>
         <Link className='hover:text-orange-600 font-bold' to="/">Home</Link>
-        <Link className='hover:text-orange-600 font-bold' to="/favourites">Favourites</Link>
+        <Link className='hover:text-orange-600 font-bold' to="/favorites">Favorites</Link>
       </ul>
     </nav>
   )
@@ -159,26 +158,52 @@ function Cards({ fightersData, weightClass }) {
     </div>
   );
 }
-export function Favourites() {
+export function Favorites() {
+  // Retrieve favorites from localStorage
+  const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
   return (
     <>
       <Navigation />
       <section>
-        <h1>Favourites page.</h1>
-      </section></>
-
-  )
+        <h1>Favorited fighters.</h1>
+        {/* Render fighter cards for each favorited fighter */}
+        <div className='mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center'>
+          {Object.keys(favorites).map((fighterId) => {
+            const favorite = favorites[fighterId];
+            return (
+              <div className='w-4/5 xs:w-4/12 md:w-2/12 h-72 hover:bg-indigo-900 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighterId}>
+                <Link to={`/profile/${fighterId}`}>
+                  <div className='flex flex-col'>
+                    <div className='w-32 self-center'>
+                      <img alt={`Profile of ${favorite.name}`} className='group-hover:-translate-y-8 group-hover:scale-125 duration-200 ease-in-out transition-transform max-w-full rounded-t-lg' src={favorite.img} />
+                    </div>
+                    <div className='text-left flex flex-col justify-start'>
+                      <div className='flex flex-col relative text-center'>
+                        <h4 className='leading-none'>{favorite.name}</h4>
+                        <span className='absolute xs:static right-0'>{favorite.nickname ? `'${favorite.nickname}'` : favorite.nickname}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+                {/* Display other fighter details as needed */}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+    </>
+  );
 }
 export function Profile() {
   const { id } = useParams();
   const [fighterData, setFighterData] = useState(null);
-  let favouritesList = [];
 
   function Ping() {
     return (
-      <span class="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+      <span className="flex absolute h-3 w-3 top-0 right-0 -mt-1 -mr-1">
+        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
       </span>
     )
   }
@@ -209,16 +234,43 @@ export function Profile() {
     }
 
 
-    const addToFavourites = () => {
-      localStorage.setItem(fighterData.name, id)
-      console.log(id);
-      favouritesList.push(id)
-      console.log(favouritesList);
-    }
-    const removeFromFavourites = () => {
-      localStorage.removeItem(fighterData.name);
-      console.log(favouritesList);
-    }
+    // To add a fighter to favorites
+    const addToFavorites = () => {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+
+      // Check if the fighter is already in favorites
+      const isAlreadyFavorited = favorites.hasOwnProperty(id);
+
+      // If not already favorited, add to favorites
+      if (!isAlreadyFavorited) {
+        const newFavorite = {
+          [id]: fighterData, // Use the fighter ID as the key
+        };
+
+        // Update favorites in localStorage
+        localStorage.setItem('favorites', JSON.stringify({ ...favorites, ...newFavorite }));
+      }
+    };
+
+    // To remove a fighter from favorites
+    const removeFromFavorites = () => {
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
+
+      // Check if the fighter is already in favorites
+      const isAlreadyFavorited = favorites.hasOwnProperty(id);
+
+      // If already favorited, remove from favorites
+      if (isAlreadyFavorited) {
+        // Create a copy of the favorites object without the specified ID
+        const { [id]: removedFavorite, ...updatedFavorites } = favorites;
+
+        // Update favorites in localStorage
+        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+
+        console.log(updatedFavorites); // Log the updated list of favorites
+      }
+    };
+
     return (
       <>
         <Navigation />
@@ -227,8 +279,8 @@ export function Profile() {
             <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-96 bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
             </div>
             <h1 className='text-center'>{fighterData.name}</h1>
-            <span><button onClick={((id) => addToFavourites(id))}>Add to favourites</button></span>
-            <span><button onClick={((id) => removeFromFavourites(id))}>Remove from favourites</button></span>
+            <span><button onClick={addToFavorites}>Add to favorites</button></span>
+            <span><button onClick={removeFromFavorites}>Remove from favorites</button></span>
             <div className='flex flex-col md:flex-row gap-4'>
               <div className='p-6 md:w-1/2 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3 id='bio'>Bio</h3>
