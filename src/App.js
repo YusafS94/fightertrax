@@ -109,7 +109,7 @@ function Cards({ fightersData, weightClass }) {
   return (
     <div className='mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center'>
       {filteredFighters.map((fighter) => (
-        <div className='w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 hover:bg-indigo-900 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighter.id}>
+        <div className='bg-white/5 w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 hover:bg-gradient-to-br from-secondary1 to-secondary2 border border-primary1/70 hover:border-slate-400 shadow-xl shadow-gray-950 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighter.id}>
           <Link to={`/profile/${fighter.id}`}>
             <div className='flex flex-col h-80'>
               <div className='w-32 self-center'>
@@ -173,7 +173,7 @@ export function Favorites() {
           {Object.keys(favorites).map((fighterId) => {
             const favorite = favorites[fighterId];
             return (
-              <div className='w-4/5 xs:w-4/12 md:w-2/12 h-72 hover:bg-indigo-900 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighterId}>
+              <div className='w-4/5 xs:w-4/12 md:w-2/12 h-72 hover:bg-gradient-to-br from-secondary1 to-secondary2 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighterId}>
                 <Link to={`/profile/${fighterId}`}>
                   <div className='flex flex-col'>
                     <div className='w-32 self-center'>
@@ -240,6 +240,13 @@ export function Profile() {
             <h4>{fighterData.fights[arrayNum].name}</h4>
             <p>{capitaliseFirstLetter(fighterData.fights[arrayNum].result)} - {fighterData.fights[arrayNum].method}</p>
           </div>
+          <div>
+            <p>Opponent: {fighterData.fights[arrayNum].opponent}</p>
+            <p>Date: {fighterData.fights[arrayNum].date}</p>
+            <p>Referee: {fighterData.fights[arrayNum].referee}</p>
+            <p>Round: {fighterData.fights[arrayNum].round}</p>
+            <p>Time: {fighterData.fights[arrayNum].time}</p>
+          </div>
           <div></div>
         </div>
       )
@@ -286,34 +293,184 @@ export function Profile() {
     return (
       <>
         <Navigation />
-        <section className=''>
+        <section>
           <div className='mx-8 mb-8'>
+            {/* Header img section */}
             <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-96 bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
             </div>
-            <h1 className='text-center'>{fighterData.name}</h1>
-            <FavoriteButton
-              isAlreadyFavorited={isAlreadyFavorited}
-              addToFavorites={addToFavorites}
-              removeFromFavorites={removeFromFavorites}
-            />
-
-            <div className='flex flex-col md:flex-row gap-4'>
-              <div className='p-6 md:w-1/2 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+            <div className='flex items-center border-b'>
+              <h1 className='text-center mr-auto'>{fighterData.name}</h1>
+              <FavoriteButton
+                isAlreadyFavorited={isAlreadyFavorited}
+                addToFavorites={addToFavorites}
+                removeFromFavorites={removeFromFavorites}
+              />
+            </div>
+            {/* Bio, stats and style sections */}
+            <div className='flex flex-col lg:flex-row gap-4'>
+              {/* Bio */}
+              <div className='p-6 lg:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3 id='bio'>Bio</h3>
                 <p>{fighterData.bio}</p>
               </div>
-              <div className='p-6 md:w-1/2 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+
+              {/* Stats, style */}
+              <div className='flex flex-col gap-4 p-6 lg:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3>Stats</h3>
-                <div>
-                  <p>Wins: {fighterData.wins.total}</p>
-                  <p>Losses: {fighterData.losses.total}</p>
+                {/* Info cards */}
+                <div className='flex gap-2'>
+                  <div className='rounded-md border border-slate-600 p-4 w-full'>
+                    <h4>Style</h4>
+                    <ul className='list-disc px-2'>
+                      {fighterData.summary.map((style) => (
+                        <li key={style}>{style}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <div className='rounded-md border border-slate-600 w-full flex flex-col gap-5 p-4'>
+                  {/* Wins */}
+                  <div className='h-24'>
+                    <svg className='rounded-sm' width="full" height="full">
+                      {/* <rect width="640" height="280" fill="red" /> */}
+                      <rect x="0" y="0" width="100%" id="svg_rect" height="50"
+                        fill="salmon" />
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-sm font-bold'>Total wins: {fighterData.wins.total} </text>
+                      <rect x="0" y="50" width={(fighterData.wins.knockouts / fighterData.wins.total * 100) + "%"} id="svg_rect" height="50"
+                        fill="lightsalmon" />
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-sm font-bold'>{fighterData.wins.knockouts} of them knockouts. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                    </svg>
+                  </div>
+                  {/* Strikes */}
+                  <div className='h-24'>
+                    <svg className='rounded-sm' width="full" height="full">
+                      {/* <rect width="640" height="280" fill="red" /> */}
+                      <rect x="0" y="0" width="100%" id="svg_rect" height="50"
+                        fill="maroon" />
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-sm font-bold'>Total strikes attempted: {fighterData.strikes.attempted}</text>
+                      <rect x="0" y="50" width={(fighterData.strikes.successful / fighterData.strikes.attempted * 100) + "%"} id="svg_rect" height="50"
+                        fill="brown" />
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-sm font-bold'>{fighterData.strikes.successful} of them successful. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                    </svg>
+                  </div>
+                  {/* Takedowns */}
+                  <div className='h-24'>
+                    <svg className='rounded-sm' width="full" height="full">
+                      {/* <rect width="640" height="280" fill="red" /> */}
+                      <rect x="0" y="0" width="100%" id="svg_rect" height="50"
+                        fill="blue" />
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-sm font-bold'>Total takedowns attempted: {fighterData.takedowns.attempted}</text>
+                      <rect x="0" y="50" width={(fighterData.takedowns.successful / fighterData.takedowns.attempted * 100) + "%"} id="svg_rect" height="50"
+                        fill="royalblue" />
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-sm font-bold'>{fighterData.takedowns.successful} of them successful. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                    </svg>
+                  </div>
                 </div>
               </div>
+
+              {/* Breakdown */}
+              <div className='flex flex-col gap-4 p-6 lg:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+                <h3>Full Breakdown</h3>
+                {/* Info cards */}
+                <div className='flex flex-col md:flex gap-3'>
+                  {/* Wins */}
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
+                    <h4>Wins: {fighterData.wins.total}</h4>
+                    <div className='flex justify-around w-full'>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Knockouts</p>
+                        <p>{fighterData.wins.knockouts}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Submissions</p>
+                        <p>{fighterData.wins.submissions}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Decisions</p>
+                        <p>{fighterData.wins.decisions}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Others</p>
+                        <p>{fighterData.wins.others}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Losses */}
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
+                    <h4>Losses: {fighterData.losses.total}</h4>
+                    <div className='flex justify-around w-full'>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Knockouts</p>
+                        <p>{fighterData.losses.knockouts}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Submissions</p>
+                        <p>{fighterData.losses.submissions}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Decisions</p>
+                        <p>{fighterData.losses.decisions}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Others</p>
+                        <p>{fighterData.losses.others}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Strikes */}
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
+                    <h4>Strikes: {fighterData.strikes.attempted}</h4>
+                    <div className='flex justify-around w-full'>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Successful</p>
+                        <p>{fighterData.strikes.successful}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Standing</p>
+                        <p>{fighterData.strikes.standing}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Clinch</p>
+                        <p>{fighterData.strikes.clinch}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Ground</p>
+                        <p>{fighterData.strikes.ground}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Takedowns */}
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
+                    <h4>Takedowns: {fighterData.takedowns.attempted}</h4>
+                    <div className='flex justify-around w-full'>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Successful</p>
+                        <p>{fighterData.takedowns.successful}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Submissions</p>
+                        <p>{fighterData.takedowns.submissions}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Passes</p>
+                        <p>{fighterData.takedowns.passes}</p>
+                      </div>
+                      <div className='flex flex-col justify-center items-center'>
+                        <p>Sweeps</p>
+                        <p>{fighterData.takedowns.sweeps}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
           </div>
         </section>
-        <section className=''>
-          <div className='bg-gradient-to-r from-secondary1 to-secondary2 p-4 mx-8 mb-8 rounded-lg'>
+
+        <section>
+          <div className='bg-gradient-to-r from-secondary1 to-secondary2 p-4 mx-8 mb-8 rounded-lg flex flex-col gap-4'>
             <h3>Recent fights</h3>
             <div className='flex flex-col md:flex-row gap-4'>
               <FightCard arrayNum="0" latest={true} />

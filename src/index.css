@@ -34,7 +34,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: rgb(0, 3, 14); */
-  background-image: linear-gradient(to top right, rgb(0, 3, 14), rgb(0, 7, 34));
+  /* background-image: linear-gradient(to top right, rgb(0, 3, 14), rgb(0, 7, 34)); */
+  background-color: #121212;
   color: aliceblue;
 }
 
