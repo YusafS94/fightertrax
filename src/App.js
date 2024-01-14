@@ -38,6 +38,7 @@ function Header(props) {
     </header>
   )
 }
+// THIS IS CODE I DIDN'T USE AS I DIDN'T HAVE TIME TO IMPLEMENT A SEARCH FUNCTION, BUT LEFT IT HERE TO SHOW MY WORK
 // function Form() {
 //   const nameInput = useRef();
 //   const submit = (e) => {
@@ -228,7 +229,7 @@ export function Profile() {
   if (fighterData) {
     function FightCard({ arrayNum, latest }) {
       return (
-        <div className='relative md:w-3/12 border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+        <div className='relative border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg w-full'>
           {/* Conditional/Ternary operator that returns Ping component if latest is true */}
           {latest == true ? <Ping /> : null}
           <div className='border-b'>
@@ -307,25 +308,40 @@ export function Profile() {
               />
             </div>
             {/* Bio, stats and style sections */}
-            <div className='flex flex-col lg:flex-row gap-4'>
+            <div className='flex flex-col xl:flex-row gap-4'>
               {/* Bio */}
-              <div className='p-6 lg:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+              <div className='xl:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg p-6'>
                 <h3 id='bio'>Bio</h3>
-                <p>{fighterData.bio}</p>
+                <div>
+                  <p>{fighterData.bio}</p>
+                </div>
+                <div>
+                  <ul className='py-2 flex flex-wrap'>
+                    {fighterData.summary.map((style) => (
+                      <li className='p-2 w-6/12 md:w-64 border inline rounded-lg uppercase text-center font-semibold' key={style}>{style}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
 
               {/* Stats, style */}
-              <div className='flex flex-col gap-4 p-6 lg:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+              <div className='flex flex-col gap-4 p-6 xl:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3>Stats</h3>
                 {/* Info cards */}
                 <div className='flex gap-2'>
                   <div className='rounded-md border border-slate-600 p-4 w-full'>
-                    <h4>Style</h4>
-                    <ul className='list-disc px-2'>
-                      {fighterData.summary.map((style) => (
-                        <li key={style}>{style}</li>
-                      ))}
-                    </ul>
+                    {/* Win/Loss */}
+                    <div className='h-24'>
+                      <svg className='rounded-sm' width="full" height="full">
+                        {/* <rect width="640" height="280" fill="red" /> */}
+                        <rect x="0" y="0" width="100%" id="svg_rect" height="50"
+                          fill="green" />
+                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Wins: {fighterData.wins.total} </text>
+                        <rect x="0" y="50" width={(fighterData.losses.total / fighterData.wins.total * 100) + "%"} id="svg_rect" height="50"
+                          fill="maroon" />
+                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.losses.total} Loss ({(fighterData.losses.total / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                      </svg>
+                    </div>
                   </div>
                 </div>
                 <div className='rounded-md border border-slate-600 w-full flex flex-col gap-5 p-4'>
@@ -335,10 +351,10 @@ export function Profile() {
                       {/* <rect width="640" height="280" fill="red" /> */}
                       <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                         fill="salmon" />
-                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-sm font-bold'>Total wins: {fighterData.wins.total} </text>
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Total wins: {fighterData.wins.total} </text>
                       <rect x="0" y="50" width={(fighterData.wins.knockouts / fighterData.wins.total * 100) + "%"} id="svg_rect" height="50"
                         fill="lightsalmon" />
-                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-sm font-bold'>{fighterData.wins.knockouts} of them knockouts. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.wins.knockouts} knockouts. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
                     </svg>
                   </div>
                   {/* Strikes */}
@@ -347,10 +363,10 @@ export function Profile() {
                       {/* <rect width="640" height="280" fill="red" /> */}
                       <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                         fill="maroon" />
-                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-sm font-bold'>Total strikes attempted: {fighterData.strikes.attempted}</text>
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Attempted strikes: {fighterData.strikes.attempted}</text>
                       <rect x="0" y="50" width={(fighterData.strikes.successful / fighterData.strikes.attempted * 100) + "%"} id="svg_rect" height="50"
                         fill="brown" />
-                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-sm font-bold'>{fighterData.strikes.successful} of them successful. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.strikes.successful} successful. ({(fighterData.strikes.successful / fighterData.strikes.attempted * 100).toFixed(1) + "%"})</text>
                     </svg>
                   </div>
                   {/* Takedowns */}
@@ -359,103 +375,105 @@ export function Profile() {
                       {/* <rect width="640" height="280" fill="red" /> */}
                       <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                         fill="blue" />
-                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-sm font-bold'>Total takedowns attempted: {fighterData.takedowns.attempted}</text>
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Takedowns attempted: {fighterData.takedowns.attempted}</text>
                       <rect x="0" y="50" width={(fighterData.takedowns.successful / fighterData.takedowns.attempted * 100) + "%"} id="svg_rect" height="50"
                         fill="royalblue" />
-                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-sm font-bold'>{fighterData.takedowns.successful} of them successful. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.takedowns.successful} successful. ({(fighterData.takedowns.successful / fighterData.takedowns.attempted * 100).toFixed(1) + "%"})</text>
                     </svg>
                   </div>
                 </div>
               </div>
 
               {/* Breakdown */}
-              <div className='flex flex-col gap-4 p-6 lg:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
+              <div className='flex flex-col gap-4 p-6 xl:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3>Full Breakdown</h3>
                 {/* Info cards */}
                 <div className='flex flex-col md:flex gap-3'>
                   {/* Wins */}
-                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
-                    <h4>Wins: {fighterData.wins.total}</h4>
-                    <div className='flex justify-around w-full'>
-                      <div className='flex flex-col justify-center items-center'>
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg gap-2'>
+                    <h4>Wins</h4>
+                    <div className='flex flex-col gap-2 md:flex-row justify-around w-full'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Knockouts</p>
                         <p>{fighterData.wins.knockouts}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Submissions</p>
                         <p>{fighterData.wins.submissions}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Decisions</p>
                         <p>{fighterData.wins.decisions}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Others</p>
                         <p>{fighterData.wins.others}</p>
                       </div>
                     </div>
                   </div>
                   {/* Losses */}
-                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
-                    <h4>Losses: {fighterData.losses.total}</h4>
-                    <div className='flex justify-around w-full'>
-                      <div className='flex flex-col justify-center items-center'>
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg gap-2'>
+                    <h4>Losses</h4>
+                    <div className='flex flex-col gap-2 md:flex-row justify-around w-full'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Knockouts</p>
                         <p>{fighterData.losses.knockouts}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Submissions</p>
                         <p>{fighterData.losses.submissions}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Decisions</p>
                         <p>{fighterData.losses.decisions}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Others</p>
                         <p>{fighterData.losses.others}</p>
                       </div>
                     </div>
                   </div>
+
                   {/* Strikes */}
-                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
-                    <h4>Strikes: {fighterData.strikes.attempted}</h4>
-                    <div className='flex justify-around w-full'>
-                      <div className='flex flex-col justify-center items-center'>
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg gap-2'>
+                    <h4>Strikes</h4>
+                    <div className='flex flex-col gap-2 md:flex-row justify-around w-full'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Successful</p>
                         <p>{fighterData.strikes.successful}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Standing</p>
                         <p>{fighterData.strikes.standing}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Clinch</p>
                         <p>{fighterData.strikes.clinch}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Ground</p>
                         <p>{fighterData.strikes.ground}</p>
                       </div>
                     </div>
                   </div>
+
                   {/* Takedowns */}
-                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg'>
-                    <h4>Takedowns: {fighterData.takedowns.attempted}</h4>
-                    <div className='flex justify-around w-full'>
-                      <div className='flex flex-col justify-center items-center'>
+                  <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg gap-2'>
+                    <h4>Takedowns</h4>
+                    <div className='flex flex-col gap-2 md:flex-row justify-around w-full'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Successful</p>
                         <p>{fighterData.takedowns.successful}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Submissions</p>
                         <p>{fighterData.takedowns.submissions}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Passes</p>
                         <p>{fighterData.takedowns.passes}</p>
                       </div>
-                      <div className='flex flex-col justify-center items-center'>
+                      <div className='bg-gradient-to-r from-primary1 to-primary2 p-2 flex flex-col justify-center items-center rounded-lg w-full'>
                         <p>Sweeps</p>
                         <p>{fighterData.takedowns.sweeps}</p>
                       </div>
@@ -473,10 +491,14 @@ export function Profile() {
           <div className='bg-gradient-to-r from-secondary1 to-secondary2 p-4 mx-8 mb-8 rounded-lg flex flex-col gap-4'>
             <h3>Recent fights</h3>
             <div className='flex flex-col md:flex-row gap-4'>
-              <FightCard arrayNum="0" latest={true} />
-              <FightCard arrayNum="1" latest={false} />
-              <FightCard arrayNum="2" latest={false} />
-              <FightCard arrayNum="2" latest={false} />
+              <div className='flex flex-col w-full border border-green-500 lg:flex-row gap-4'>
+                <FightCard arrayNum="0" latest={true} />
+                <FightCard arrayNum="1" latest={false} />
+              </div>
+              <div className='flex flex-col w-full border border-green-500 lg:flex-row gap-4'>
+                <FightCard arrayNum="2" latest={false} />
+                <FightCard arrayNum="2" latest={false} />
+              </div>
             </div>
           </div>
         </section>
