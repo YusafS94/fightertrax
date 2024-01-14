@@ -495,7 +495,7 @@ export function Profile() {
                 <FightCard arrayNum="0" latest={true} />
                 <FightCard arrayNum="1" latest={false} />
               </div>
-              <div className='flex flex-col w-full border border-green-500 lg:flex-row gap-4'>
+              <div className='flex flex-col w-full lg:flex-row gap-4'>
                 <FightCard arrayNum="2" latest={false} />
                 <FightCard arrayNum="2" latest={false} />
               </div>
