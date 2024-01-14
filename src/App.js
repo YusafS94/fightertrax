@@ -491,7 +491,7 @@ export function Profile() {
           <div className='bg-gradient-to-r from-secondary1 to-secondary2 p-4 mx-8 mb-8 rounded-lg flex flex-col gap-4'>
             <h3>Recent fights</h3>
             <div className='flex flex-col md:flex-row gap-4'>
-              <div className='flex flex-col w-full border lg:flex-row gap-4'>
+              <div className='flex flex-col w-full lg:flex-row gap-4'>
                 <FightCard arrayNum="0" latest={true} />
                 <FightCard arrayNum="1" latest={false} />
               </div>
