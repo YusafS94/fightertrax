@@ -11,8 +11,8 @@ function Navigation() {
   return (
     <nav className='bg-gradient-to-br from-secondary1 via-yellow-500 via-red-500 to-secondary2 p-0.5 w-48 mx-auto mt-4 rounded-full'>
       <ul className='px-auto flex justify-evenly py-4 bg-gradient-to-r from-primary1 to-primary2 rounded-full'>
-        <Link className='hover:text-orange-600 font-bold' to="/">Home</Link>
-        <Link className='hover:text-orange-600 font-bold' to="/favorites">Favorites</Link>
+        <Link className='hover:text-secondary1 font-bold' to="/">Home</Link>
+        <Link className='hover:text-secondary1 font-bold' to="/favorites">Favorites</Link>
       </ul>
     </nav>
   )
@@ -80,21 +80,21 @@ function Data() {
         {/* <h2>Pound-for-Pound</h2>
         <Cards fightersData={allFightersData.fighters} weightClass="Pound-for-Pound" /> */}
         <div id='cards'>
-          <h2>Heavyweight</h2>
+          <h2 className='my-14'>Heavyweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Heavyweight" />
-          <h2>Light Heavyweight</h2>
+          <h2 className='my-14'>Light Heavyweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Light Heavyweight" />
-          <h2>Middleweight</h2>
+          <h2 className='my-14'>Middleweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Middleweight" />
-          <h2>Welterweight</h2>
+          <h2 className='my-14'>Welterweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Welterweight" />
-          <h2>Lightweight</h2>
+          <h2 className='my-14'>Lightweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Lightweight" />
-          <h2>Featherweight</h2>
+          <h2 className='my-14'>Featherweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Featherweight" />
-          <h2>Bantamweight</h2>
+          <h2 className='my-14'>Bantamweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Bantamweight" />
-          <h2>Flyweight</h2>
+          <h2 className='my-14'>Flyweight</h2>
           <Cards fightersData={allFightersData.fighters} weightClass="Flyweight" />
         </div>
       </>
@@ -110,13 +110,16 @@ function Cards({ fightersData, weightClass }) {
   return (
     <div className='mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center'>
       {filteredFighters.map((fighter) => (
-        <div className='bg-white/5 w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 hover:bg-gradient-to-br from-secondary1 to-secondary2 border border-primary1/70 hover:border-slate-400 shadow-xl shadow-gray-950 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighter.id}>
+        <div className='bg-white/5 w-4/5 xs:w-2/5 lg:w-4/12 xl:w-3/12 hover:bg-gradient-to-br from-secondary1 to-secondary2 border border-primary1/70 hover:border-slate-400 shadow-xl shadow-gray-950 rounded-lg hover:-translate-y-3 transition-transform p-4 group' key={fighter.id}>
           <Link to={`/profile/${fighter.id}`}>
-            <div className='flex flex-col h-80'>
+            <div className='flex flex-col'>
+              {/* Image */}
               <div className='w-32 self-center'>
                 <img alt={`Profile of ${fighter.name}`} className='group-hover:-translate-y-8 group-hover:scale-125 duration-200 ease-in-out transition-transform max-w-full rounded-t-lg' src={fighter.img} />
               </div>
-              <div className='text-left flex flex-col justify-start'>
+
+              <div className='text-left flex flex-col gap-2 justify-start'>
+                {/* Fighter name, win/loss and nickname */}
                 <div className='flex flex-col relative'>
                   <h4 className='leading-none'>{fighter.name}
                   </h4>
@@ -126,29 +129,32 @@ function Cards({ fightersData, weightClass }) {
                   </div>
                   <span className='absolute right-0 bottom-0'>{fighter.nickname ? `'${fighter.nickname}'` : fighter.nickname}</span>
                 </div>
-                <div className='border-t'>
 
-                  {/* <p><span className='bg-green-500 px-2 rounded-lg'>{capitaliseFirstLetter(fighter.latestFight.result)}</span> vs {fighter.latestFight.opponent}</p> */}
+                {/* Latest fight */}
+                <div className='border-t py-2'>
+                  <div className='border rounded-lg flex flex-col items-center p-2'>
+                    {/* Ternary/Conditional Operator checking if result is win or loss and displaying different coloured "pill". */}
+                    <p>
+                      {fighter.latestFight.result === "win" ? (
+                        <span className='bg-green-500 px-2 rounded-lg'>
+                          {capitaliseFirstLetter(fighter.latestFight.result)}
+                        </span>
+                      ) : (
+                        <span className='bg-red-500 px-2 rounded-lg'>
+                          {capitaliseFirstLetter(fighter.latestFight.result)}
+                        </span>
+                      )}
+                      &nbsp;
+                      vs {fighter.latestFight.opponent}
+                    </p>
+                    <p>{fighter.latestFight.name}</p>
+                  </div>
 
-                  <p>
-                    {fighter.latestFight.result === "win" ? (
-                      <span className='bg-green-500 px-2 rounded-lg'>
-                        {capitaliseFirstLetter(fighter.latestFight.result)}
-                      </span>
-                    ) : (
-                      <span className='bg-red-500 px-2 rounded-lg'>
-                        {capitaliseFirstLetter(fighter.latestFight.result)}
-                      </span>
-                    )}
-                    &nbsp;
-                    vs {fighter.latestFight.opponent}
-                  </p>
-
-
-                  <p>{fighter.latestFight.name}</p>
+                  {/* Win method and round */}
                   <div className='flex flex-col justify-center items-center'>
-                    <p className='text-xs'>{fighter.latestFight.method} - <span>Round {fighter.latestFight.round}</span></p>
-                    <p className='text-xs'><span>Time: {fighter.latestFight.time}</span></p>
+                    <p className='text-center'>{fighter.latestFight.method}</p>
+                    <p><span>Round {fighter.latestFight.round}</span></p>
+                    <p className=''><span>Time: {fighter.latestFight.time}</span></p>
                   </div>
                 </div>
               </div>
@@ -164,38 +170,59 @@ export function Favorites() {
   // Retrieve favorites from localStorage
   const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
 
-  return (
-    <>
-      <Navigation />
-      <section>
-        <h1>Favorited fighters.</h1>
-        {/* Render fighter cards for each favorited fighter */}
-        <div className='mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center'>
-          {Object.keys(favorites).map((fighterId) => {
-            const favorite = favorites[fighterId];
-            return (
-              <div className='w-4/5 xs:w-4/12 md:w-2/12 h-72 hover:bg-gradient-to-br from-secondary1 to-secondary2 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 group' key={fighterId}>
-                <Link to={`/profile/${fighterId}`}>
-                  <div className='flex flex-col'>
-                    <div className='w-32 self-center'>
-                      <img alt={`Profile of ${favorite.name}`} className='group-hover:-translate-y-8 group-hover:scale-125 duration-200 ease-in-out transition-transform max-w-full rounded-t-lg' src={favorite.img} />
-                    </div>
-                    <div className='text-left flex flex-col justify-start'>
-                      <div className='flex flex-col relative text-center'>
-                        <h4 className='leading-none'>{favorite.name}</h4>
-                        <span className='absolute xs:static right-0'>{favorite.nickname ? `'${favorite.nickname}'` : favorite.nickname}</span>
+  if (Object.keys(favorites).length === 0 && favorites.constructor === Object) {
+    return (
+      <>
+        <Navigation />
+        <section className=''>
+          <div className='flex flex-col text-center items-center gap-4 my-14 p-4'>
+            <h1 className=''>No favorited fighters</h1>
+            <p className=''>To favorite a fighter, view their profile and click the "heart" icon on the right.</p>
+          </div>
+          {/* Render fighter cards for each favorited fighter */}
+          <div className='bg-white/5 mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center py-14'>
+            <p>There's nothing here <span>☹️</span></p>
+          </div>
+        </section>
+        <Footer />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Navigation />
+        <section className=''>
+          <h1 className='text-center my-14'>Favorited fighters</h1>
+          {/* Render fighter cards for each favorited fighter */}
+          <div className='bg-white/5 mx-auto mb-8 flex flex-row flex-wrap gap-4 justify-center items-center py-14'>
+            {Object.keys(favorites).map((fighterId) => {
+              const favorite = favorites[fighterId];
+              return (
+                <div className='w-4/5 xs:w-4/12 md:w-2/12 hover:bg-gradient-to-br from-secondary1 to-secondary2 border border-black-400 hover:border-slate-400 shadow-lg shadow-indigo-900/60 rounded-lg hover:-translate-y-3 transition-transform p-2 h-80 group' key={fighterId}>
+                  <Link to={`/profile/${fighterId}`}>
+                    <div className='flex flex-col gap-4'>
+                      <div className='w-32 self-center'>
+                        <img alt={`Profile of ${favorite.name}`} className='group-hover:-translate-y-8 group-hover:scale-125 duration-200 ease-in-out transition-transform max-w-full rounded-t-lg' src={favorite.img} />
+                      </div>
+                      <div className='text-left flex flex-col justify-start'>
+                        <div className='flex flex-col relative text-center'>
+                          <h4 className='leading-none'>{favorite.name}</h4>
+                          <span className=''>{favorite.nickname ? `'${favorite.nickname}'` : favorite.nickname}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Link>
-                {/* Display other fighter details as needed */}
-              </div>
-            );
-          })}
-        </div>
-      </section>
-    </>
-  );
+                  </Link>
+                  {/* Display other fighter details as needed */}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+        <Footer />
+      </>
+    );
+  }
+
 }
 export function Profile() {
   const { id } = useParams();
@@ -299,7 +326,7 @@ export function Profile() {
             {/* Header img section */}
             <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-96 bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
             </div>
-            <div className='flex items-center border-b'>
+            <div className='flex items-center border-b my-8'>
               <h1 className='text-center mr-auto'>{fighterData.name}</h1>
               <FavoriteButton
                 isAlreadyFavorited={isAlreadyFavorited}
@@ -336,10 +363,10 @@ export function Profile() {
                         {/* <rect width="640" height="280" fill="red" /> */}
                         <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                           fill="green" />
-                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Wins: {fighterData.wins.total} </text>
+                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>Wins: {fighterData.wins.total} </text>
                         <rect x="0" y="50" width={(fighterData.losses.total / fighterData.wins.total * 100) + "%"} id="svg_rect" height="50"
                           fill="maroon" />
-                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.losses.total} Loss ({(fighterData.losses.total / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.losses.total} Loss ({(fighterData.losses.total / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
                       </svg>
                     </div>
                   </div>
@@ -351,10 +378,10 @@ export function Profile() {
                       {/* <rect width="640" height="280" fill="red" /> */}
                       <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                         fill="salmon" />
-                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Total wins: {fighterData.wins.total} </text>
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>Total wins: {fighterData.wins.total} </text>
                       <rect x="0" y="50" width={(fighterData.wins.knockouts / fighterData.wins.total * 100) + "%"} id="svg_rect" height="50"
                         fill="lightsalmon" />
-                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.wins.knockouts} knockouts. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.wins.knockouts} knockouts. ({(fighterData.wins.knockouts / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
                     </svg>
                   </div>
                   {/* Strikes */}
@@ -363,10 +390,10 @@ export function Profile() {
                       {/* <rect width="640" height="280" fill="red" /> */}
                       <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                         fill="maroon" />
-                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Attempted strikes: {fighterData.strikes.attempted}</text>
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>Attempted strikes: {fighterData.strikes.attempted}</text>
                       <rect x="0" y="50" width={(fighterData.strikes.successful / fighterData.strikes.attempted * 100) + "%"} id="svg_rect" height="50"
                         fill="brown" />
-                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.strikes.successful} successful. ({(fighterData.strikes.successful / fighterData.strikes.attempted * 100).toFixed(1) + "%"})</text>
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.strikes.successful} successful. ({(fighterData.strikes.successful / fighterData.strikes.attempted * 100).toFixed(1) + "%"})</text>
                     </svg>
                   </div>
                   {/* Takedowns */}
@@ -375,10 +402,10 @@ export function Profile() {
                       {/* <rect width="640" height="280" fill="red" /> */}
                       <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                         fill="blue" />
-                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs font-bold'>Takedowns attempted: {fighterData.takedowns.attempted}</text>
+                      <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>Takedowns attempted: {fighterData.takedowns.attempted}</text>
                       <rect x="0" y="50" width={(fighterData.takedowns.successful / fighterData.takedowns.attempted * 100) + "%"} id="svg_rect" height="50"
                         fill="royalblue" />
-                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs font-bold'>{fighterData.takedowns.successful} successful. ({(fighterData.takedowns.successful / fighterData.takedowns.attempted * 100).toFixed(1) + "%"})</text>
+                      <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.takedowns.successful} successful. ({(fighterData.takedowns.successful / fighterData.takedowns.attempted * 100).toFixed(1) + "%"})</text>
                     </svg>
                   </div>
                 </div>
@@ -513,9 +540,19 @@ export function Profile() {
 }
 function Footer() {
   return (
-    <div>
-      <p>Footer</p>
-    </div>
+    <footer className='bg-black mt-96 p-4 flex gap-4 justify-center'>
+      <div className='py-6 flex flex-col items-start'>
+        <h4 className='underline'>FighterTrax</h4>
+        <p>by Yusaf Saddiq</p>
+      </div>
+      <div className='py-6'>
+        <h4 className='underline'>Sitemap</h4>
+        <ul className='flex flex-col items-start'>
+          <Link className='hover:text-secondary1 font-bold' to={"/"}>Home</Link>
+          <Link className='hover:text-secondary1 font-bold' to={"/favorites"}>Favorites</Link>
+        </ul>
+      </div>
+    </footer>
   )
 }
 export function App() {
