@@ -21,6 +21,8 @@ function Navigation() {
     <nav className='bg-gradient-to-br from-secondary1 via-yellow-500 via-red-500 to-secondary2 p-0.5 w-48 mx-auto mt-4 rounded-full'>
       <ul className='px-auto flex justify-evenly py-4 bg-gradient-to-r from-primary1 to-primary2 rounded-full'>
         {/* Used Link function from React Router */}
+        {/* "/" route loads default App, "/favorites" route loads the Favorites component for the entire page */}
+        {/* This routing is set up in index.js using React Router V6 */}
         <Link className='hover:text-secondary1 font-bold' to="/">Home</Link>
         <Link className='hover:text-secondary1 font-bold' to="/favorites">Favorites</Link>
       </ul>
@@ -130,8 +132,8 @@ function Cards({ fightersData, weightClass }) {
                   <h4 className='leading-none'>{fighter.name}
                   </h4>
                   <div className='flex gap-2'>
-                    <span className='bg-green-500 px-2 rounded-lg w-auto'>{fighter.wins}</span>
-                    <span className='bg-red-700 px-2 rounded-lg w-auto'>{fighter.losses}</span>
+                    <span className='bg-green-500 px-2 py-1 font-bold rounded-sm w-16 text-center'>{fighter.wins}</span>
+                    <span className='bg-red-700 px-2 py-1 font-bold rounded-sm w-16 text-center'>{fighter.losses}</span>
                   </div>
                   {/* Used a JavaScript Ternary/Conditional Operator here as a more efficient if/else alternative */}
                   {/* If there is a nickname it will be displayed, if nickname is empty string it will be displayed but without quotations so it doesn't take up any space in the DOM */}
@@ -140,16 +142,16 @@ function Cards({ fightersData, weightClass }) {
 
                 {/* Latest fight */}
                 {/* Here i am drilling into the "latestFight" object within each fighter's object in the fighters.json in order to display a new set of details pertaining to the fighter's latest bout and its result. */}
-                <div className='border-t py-2'>
-                  <div className='border rounded-lg flex flex-col items-center p-2'>
+                <div className='border-t py-4'>
+                  <div className='bg-white/10 rounded-lg flex flex-col items-center p-4 mb-4'>
                     {/* Ternary/Conditional Operator checking if result is win or loss and displaying different coloured "pill" depending on result. */}
-                    <p>
+                    <p className='text-center'>
                       {fighter.latestFight.result === "win" ? (
-                        <span className='bg-green-500 px-2 rounded-lg'>
+                        <span className='bg-green-500 px-4 py-1 font-bold rounded-sm'>
                           {capitaliseFirstLetter(fighter.latestFight.result)}
                         </span>
                       ) : (
-                        <span className='bg-red-500 px-2 rounded-lg'>
+                        <span className='bg-red-500 px-4 py-1 font-bold rounded-sm'>
                           {capitaliseFirstLetter(fighter.latestFight.result)}
                         </span>
                       )}
@@ -307,6 +309,9 @@ export function Profile() {
 
   // Checking if fighterData exists before proceeding, else there will be "Loading..." text presented.
   if (fighterData) {
+    // Calculating total fights. Needed for bar charts
+    const totalFights = fighterData.wins.total + fighterData.losses.total;
+
     // Created a FightCard function which presents all the data around the fighter's latest fights from the "fights" array in the individual fighters' JSON file.
     // I have used an arrayNum prop to specify which fight item in the fights array i want to bring in.
     // I also used a "latest" prop so i can choose which card has the Ping element on it.
@@ -387,12 +392,14 @@ export function Profile() {
     return (
       <>
         <Navigation />
+        {/* Section containing fighter image, name, favorite button, bio, stats, and full breakdown */}
         <section>
           <div className='mx-8 mb-8'>
-            {/* Header img section */}
+            {/* Fighter image section */}
             <div style={{ backgroundImage: `url(${fighterData.img})` }} className='h-96 bg-contain bg-center bg-no-repeat flex flex-col justify-end items-center'>
             </div>
-            <div className='flex items-center border-b my-8'>
+            {/* Fighter name and Favorite button section */}
+            <div className='flex items-center border-b my-8 py-4'>
               <h1 className='text-center mr-auto'>{fighterData.name}</h1>
               <FavoriteButton
                 isAlreadyFavorited={isAlreadyFavorited}
@@ -400,7 +407,7 @@ export function Profile() {
                 removeFromFavorites={removeFromFavorites}
               />
             </div>
-            {/* Bio, stats and style sections */}
+            {/* Bio, Stats and Full Breakdown */}
             <div className='flex flex-col xl:flex-row gap-4'>
               {/* Bio */}
               <div className='xl:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg p-6'>
@@ -409,6 +416,7 @@ export function Profile() {
                   <p>{fighterData.bio}</p>
                 </div>
                 <div>
+                  {/* Added the "summary" using map method, presenting an li for each item in the summary array and passing in the style name as the key */}
                   <ul className='py-2 flex flex-wrap'>
                     {fighterData.summary.map((style) => (
                       <li className='p-2 w-6/12 md:w-64 border inline rounded-lg uppercase text-center font-semibold' key={style}>{style}</li>
@@ -417,28 +425,32 @@ export function Profile() {
                 </div>
               </div>
 
-              {/* Stats, style */}
+              {/* Stats */}
               <div className='flex flex-col gap-4 p-6 xl:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3>Stats</h3>
-                {/* Info cards */}
+                {/* Bar chart created using SVGs and Rect attribute */}
                 <div className='flex gap-2'>
                   <div className='rounded-md border border-slate-600 p-4 w-full'>
-                    {/* Win/Loss */}
+                    {/* Win/Loss rate chart */}
                     <div className='h-24'>
-                      <svg className='rounded-sm' width="full" height="full">
+                      {/* Used SVG with maths and JSON/totalFights variables for widths */}
+                      <svg className='rounded-sm' width={(fighterData.wins.total / totalFights * 100) + "%"} height="full">
                         {/* <rect width="640" height="280" fill="red" /> */}
                         <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                           fill="green" />
-                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>Wins: {fighterData.wins.total} </text>
-                        <rect x="0" y="50" width={(fighterData.losses.total / fighterData.wins.total * 100) + "%"} id="svg_rect" height="50"
+                        {/* Same for text additionally i truncated the percentage value to 1 digital after decimal using toFixed(1) */}
+                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.wins.total} Wins ({(fighterData.wins.total / totalFights * 100).toFixed(1) + "%"})</text>
+                        {/* Calculated the percentage of wins that were knockouts using  */}
+                        <rect x="0" y="50" width={(fighterData.losses.total / totalFights * 100) + "%"} id="svg_rect" height="50"
                           fill="maroon" />
-                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.losses.total} Loss ({(fighterData.losses.total / fighterData.wins.total * 100).toFixed(1) + "%"})</text>
+                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.losses.total} Loss ({(fighterData.losses.total / totalFights * 100).toFixed(1) + "%"})</text>
                       </svg>
                     </div>
                   </div>
                 </div>
                 <div className='rounded-md border border-slate-600 w-full flex flex-col gap-5 p-4'>
-                  {/* Wins */}
+                  {/* Knockouts percentage of wins chart */}
+                  {/* Calculated these bar charts in a similar way to the win/loss ratio one */}
                   <div className='h-24'>
                     <svg className='rounded-sm' width="full" height="full">
                       {/* <rect width="640" height="280" fill="red" /> */}
@@ -477,10 +489,14 @@ export function Profile() {
                 </div>
               </div>
 
+
+              {/* Used flex in Tailwind to handle the spacings and justification, full width on mobile/tablet sizes */}
+              {/* Inserted data from the wins, losses, strikes and takedowns objects in the individual fighter JSON files to populate this section. */}
+
               {/* Breakdown */}
               <div className='flex flex-col gap-4 p-6 xl:w-6/12 border border-slate-700 bg-gradient-to-r from-primary1 to-primary2 rounded-lg'>
                 <h3>Full Breakdown</h3>
-                {/* Info cards */}
+                {/* Stats cards */}
                 <div className='flex flex-col md:flex gap-3'>
                   {/* Wins */}
                   <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg gap-2'>
@@ -504,6 +520,7 @@ export function Profile() {
                       </div>
                     </div>
                   </div>
+
                   {/* Losses */}
                   <div className='rounded-md border border-slate-600 p-4 w-full flex flex-col items-center bg-white/20 shadow-lg gap-2'>
                     <h4>Losses</h4>
@@ -574,20 +591,21 @@ export function Profile() {
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
-        </section>
+        </section >
 
+        {/* Recent fights section containing 4 cards of recent fights including the most recent with the Ping on the top right */}
         <section>
           <div className='bg-gradient-to-r from-secondary1 to-secondary2 p-4 mx-8 mb-8 rounded-lg flex flex-col gap-4'>
             <h3>Recent fights</h3>
             <div className='flex flex-col md:flex-row gap-4'>
               <div className='flex flex-col w-full lg:flex-row gap-4'>
+                {/* Here i called the FightCard where needed but i used the arrayNum prop to control which fight card info in the fights array was being displayed. Also used the latest prop to control whether or not the Ping would be shown */}
                 <FightCard arrayNum="0" latest={true} />
                 <FightCard arrayNum="1" latest={false} />
               </div>
+              {/* Some breakpoint styling here, lg:flex-row means at large breakpoint flex-row will be added */}
               <div className='flex flex-col w-full lg:flex-row gap-4'>
                 <FightCard arrayNum="2" latest={false} />
                 <FightCard arrayNum="2" latest={false} />
@@ -604,6 +622,7 @@ export function Profile() {
     )
   }
 }
+// Like the navigation, i made the Footer a component too.
 function Footer() {
   return (
     <footer className='bg-black mt-96 p-4 flex gap-4 justify-center'>

@@ -1,5 +1,6 @@
 @tailwind base;
 @layer base {
+  /* Applied custom font sizes here - Yusaf */
   h1 {
     @apply font-bold;
     /* @apply text-orange-600; */
