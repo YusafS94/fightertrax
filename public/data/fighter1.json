@@ -5,30 +5,31 @@
 	"fullname": "Jon \"Bones\" Jones",
 	"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-03/JONES_JON_L_BELT_03_04.png?itok=P6J6DQpm",
 	"bio": "Jones became the youngest champion in UFC history with his title victory over Maurício Rua at age 23. He holds many UFC records in the light heavyweight division, including the most title defenses, most wins, and longest win streak. During much of his championship reign, Jones has been widely considered to be the best pound-for-pound fighter in the world. Never stopped nor outscored during his career, Jones's only professional loss is a controversial disqualification against Matt Hamill—a result that Hamill and UFC President Dana White dispute.",
-	"record": "21-1-0",
+	"record": "27-1-1",
 	"association": "Jackson-Wink MMA",
-	"age": "27",
-	"birthday": "1987-07-19",
+	"age": "36",
+	"birthday": "19/07/1987",
 	"hometown": "Rochester, New York USA",
 	"nationality": "United States",
-	"location": "Endicott, New York USA",
+	"location": "Albuquerque, New Mexico, U.S.",
 	"height": "6' 4\"",
 	"height_cm": "193",
-	"weight": "205",
-	"weight_kg": "93",
-	"weight_class": "Light Heavyweight",
+	"weight": "248",
+	"weight_kg": "112",
+	"weight_class": "Heavyweight",
 	"college": "Iowa Central",
 	"degree": "Associates Degree",
 	"summary": [
-		"Wrestling",
-		"jiu-jitsu",
-		"muay thai"
+		"greco-roman wrestling",
+		"brazilian jiu-jitsu",
+		"muay thai",
+		"gaidojutsu"
 	],
 	"wins": {
-		"total": 21,
-		"knockouts": 9,
-		"submissions": 6,
-		"decisions": 6,
+		"total": 27,
+		"knockouts": 10,
+		"submissions": 7,
+		"decisions": 10,
 		"others": 0
 	},
 	"losses": {
@@ -36,55 +37,66 @@
 		"knockouts": 0,
 		"submissions": 0,
 		"decisions": 0,
-		"others": 0
+		"others": 1
 	},
 	"strikes": {
-		"attempted": 1679,
-		"successful": 916,
-		"standing": 541,
-		"clinch": 188,
-		"ground": 187
+		"attempted": 2536,
+		"successful": 1468,
+		"standing": 958,
+		"clinch": 248,
+		"ground": 262
 	},
 	"takedowns": {
-		"attempted": 64,
-		"successful": 33,
+		"attempted": 97,
+		"successful": 36,
 		"submissions": 10,
 		"passes": 22,
 		"sweeps": 0
 	},
 	"fights": [
 		{
-			"name": "UFC 182 - Jones vs. Cormier",
-			"date": "Jan / 03 / 2015",
-			"url": "/events/UFC-182-Jones-vs-Cormier-38841",
+			"name": "UFC 285 - Jones vs. Gane",
+			"date": "04 Mar 2023",
+			"url": "/events/UFC-285-Jones-vs-Gane-95232",
 			"result": "win",
-			"method": "Decision (Unanimous)",
-			"referee": "Herb Dean",
-			"round": "5",
-			"time": "5:00",
-			"opponent": "Daniel Cormier"
+			"method": "Submission (guillotine choke)",
+			"referee": "Marc Goddard",
+			"round": "1",
+			"time": "2:04",
+			"opponent": "Cyril Gane"
 		},
 		{
-			"name": "UFC 172 - Jones vs. Teixeira",
-			"date": "Apr / 26 / 2014",
-			"url": "/events/UFC-172-Jones-vs-Teixeira-34401",
+			"name": "UFC 247 - Jones vs. Reyes",
+			"date": "08 Feb 2020",
+			"url": "/events/UFC-247-Jones-vs-Reyes-82427",
 			"result": "win",
-			"method": "Decision (Unanimous)",
+			"method": "Decision (unanimous)",
 			"referee": "Dan Miragliotta",
 			"round": "5",
 			"time": "5:00",
-			"opponent": "Glover Teixeira"
+			"opponent": "Dominick Reyes"
 		},
 		{
-			"name": "UFC 165 - Jones vs. Gustafsson",
-			"date": "Sep / 21 / 2013",
-			"url": "/events/UFC-165-Jones-vs-Gustafsson-30249",
+			"name": "UFC 239 - Jones vs. Santos",
+			"date": "06 Jul 2019",
+			"url": "/events/UFC-239-Jones-vs-Santos-75113",
 			"result": "win",
-			"method": "Decision (Unanimous)",
-			"referee": "John McCarthy",
+			"method": "Decision (split)",
+			"referee": "Herb Dean",
 			"round": "5",
 			"time": "5:00",
-			"opponent": "Alexander Gustafsson"
+			"opponent": "Thiago Santos"
+		},
+		{
+			"name": "UFC 235 - Jones vs. Smith",
+			"date": "02 Mar 2019",
+			"url": "/events/UFC-235-Jones-vs-Smith-72027",
+			"result": "win",
+			"method": "Decision (unanimous)",
+			"referee": "Herb Dean",
+			"round": "5",
+			"time": "5:00",
+			"opponent": "Anthony Smith"
 		}
 	]
 }

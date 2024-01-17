@@ -1,90 +1,99 @@
 {
 	"id": 4,
 	"name": "Francis Ngannou",
-	"nickname": "Bones",
-	"fullname": "Jon \"Bones\" Jones",
+	"nickname": "The Predator",
+	"fullname": "Francis \"The Predator\" Ngannou",
 	"img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-01/NGANNOU_FRANCIS_L_03-27.png?itok=s4MVBS7x",
-	"bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-	"record": "21-1-0",
-	"association": "Jackson-Wink MMA",
-	"age": "27",
-	"birthday": "1987-07-19",
-	"hometown": "Rochester, New York USA",
-	"nationality": "United States",
-	"location": "Endicott, New York USA",
+	"bio": "Francis Zavier Ngannou(born 5 September 1986) is a Cameroonian and French professional mixed martial artist and professional boxer who is currently signed to the Professional Fighters League (PFL). He also competed in the Heavyweight division in the Ultimate Fighting Championship (UFC), where he was the reigning UFC Heavyweight Champion at the time of his departure from the promotion. Known for his punching power, Ngannou was widely viewed as the most destructive pure puncher in the UFC's heavyweight division. In 2017, he set the world record for the hardest punch ever recorded at 129,161 units.",
+	"record": "17-3-0",
+	"association": "Xtreme Couture",
+	"age": "37",
+	"birthday": "05/09/1986",
+	"hometown": "Batié, Cameroon",
+	"nationality": "Cameroonian",
+	"location": "Las Vegas, Nevada, U.S.",
 	"height": "6' 4\"",
 	"height_cm": "193",
-	"weight": "205",
-	"weight_kg": "93",
-	"weight_class": "Light Heavyweight",
-	"college": "Iowa Central",
-	"degree": "Associates Degree",
+	"weight": "257",
+	"weight_kg": "117",
+	"weight_class": "Heavyweight",
+	"college": "",
+	"degree": "",
 	"summary": [
-		"Wrestling",
-		"jiu-jitsu",
-		"muay thai"
+		"boxing"
 	],
 	"wins": {
-		"total": 21,
-		"knockouts": 9,
-		"submissions": 6,
-		"decisions": 6,
+		"total": 17,
+		"knockouts": 12,
+		"submissions": 4,
+		"decisions": 1,
 		"others": 0
 	},
 	"losses": {
-		"total": 1,
+		"total": 3,
 		"knockouts": 0,
 		"submissions": 0,
-		"decisions": 0,
+		"decisions": 3,
 		"others": 0
 	},
 	"strikes": {
-		"attempted": 1679,
-		"successful": 916,
-		"standing": 541,
-		"clinch": 188,
-		"ground": 187
+		"attempted": 555,
+		"successful": 229,
+		"standing": 150,
+		"clinch": 36,
+		"ground": 43
 	},
 	"takedowns": {
-		"attempted": 64,
-		"successful": 33,
-		"submissions": 10,
-		"passes": 22,
-		"sweeps": 0
+		"attempted": 8,
+		"successful": 0,
+		"submissions": "ND",
+		"passes": "ND",
+		"sweeps": "ND"
 	},
 	"fights": [
 		{
-			"name": "UFC 182 - Jones vs. Cormier",
-			"date": "Jan / 03 / 2015",
-			"url": "/events/UFC-182-Jones-vs-Cormier-38841",
+			"name": "UFC 270 - Ngannou vs. Gane",
+			"date": "22 Jan 2022",
+			"url": "/events/UFC-270-Ngannou-vs-Gane-90612",
 			"result": "win",
-			"method": "Decision (Unanimous)",
+			"method": "Decision (unanimous)",
 			"referee": "Herb Dean",
 			"round": "5",
 			"time": "5:00",
-			"opponent": "Daniel Cormier"
+			"opponent": "Cyril Gane"
 		},
 		{
-			"name": "UFC 172 - Jones vs. Teixeira",
-			"date": "Apr / 26 / 2014",
-			"url": "/events/UFC-172-Jones-vs-Teixeira-34401",
+			"name": "UFC 260 - Miocic vs. Ngannou 2",
+			"date": "27 Mar 2021",
+			"url": "/events/UFC-260-Miocic-vs-Ngannou-2-88377",
 			"result": "win",
-			"method": "Decision (Unanimous)",
+			"method": "KO (punch)",
+			"referee": "Herb Dean",
+			"round": "2",
+			"time": "0:52",
+			"opponent": "Stipe Miocic"
+		},
+		{
+			"name": "UFC 249 - Ferguson vs. Gaethje",
+			"date": "09 May 2020",
+			"url": "/events/UFC-249-Ferguson-vs-Gaethje-84357",
+			"result": "win",
+			"method": "KO (punches)",
 			"referee": "Dan Miragliotta",
-			"round": "5",
-			"time": "5:00",
-			"opponent": "Glover Teixeira"
+			"round": "1",
+			"time": "0:20",
+			"opponent": "Jairzinho Rozenstruik"
 		},
 		{
-			"name": "UFC 165 - Jones vs. Gustafsson",
-			"date": "Sep / 21 / 2013",
-			"url": "/events/UFC-165-Jones-vs-Gustafsson-30249",
+			"name": "UFC on ESPN 3 - Ngannou vs. Dos Santos",
+			"date": "29 Jun 2019",
+			"url": "/events/UFC-on-ESPN-3-Ngannou-vs-Dos-Santos-73351",
 			"result": "win",
-			"method": "Decision (Unanimous)",
-			"referee": "John McCarthy",
-			"round": "5",
-			"time": "5:00",
-			"opponent": "Alexander Gustafsson"
+			"method": "TKO (punches)",
+			"referee": "Herb Dean",
+			"round": "1",
+			"time": "1:11",
+			"opponent": "Junior Dos Santos"
 		}
 	]
 }

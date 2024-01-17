@@ -317,10 +317,10 @@ export function Profile() {
     // I also used a "latest" prop so i can choose which card has the Ping element on it.
     function FightCard({ arrayNum, latest }) {
       return (
-        <div className='relative border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg w-full'>
+        <div className='relative border border-slate-700 p-4 bg-gradient-to-r from-primary1 to-primary2 rounded-lg w-full flex flex-col gap-2 h-auto'>
           {/* Conditional/Ternary operator that returns Ping component if latest is true, else its just a null value (no Ping) */}
           {latest ? <Ping /> : null}
-          <div className='border-b'>
+          <div className='border-b py-2'>
             {/* Added a View Fight Card link to an external site (Sherdog) where users can view the full fight card if they wish to */}
             <span className='relative inline-flex float-right'>
               <a className='flex items-center hover:underline bg-transparent text-bold rounded-lg px-2 float-end' href={`https://www.sherdog.com${fighterData.fights[arrayNum].url}`} target='blank'>View fight card
@@ -439,11 +439,11 @@ export function Profile() {
                         <rect x="0" y="0" width="100%" id="svg_rect" height="50"
                           fill="green" />
                         {/* Same for text additionally i truncated the percentage value to 1 digital after decimal using toFixed(1) */}
-                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.wins.total} Wins ({(fighterData.wins.total / totalFights * 100).toFixed(1) + "%"})</text>
+                        <text x="10" y="30%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.wins.total} wins ({(fighterData.wins.total / totalFights * 100).toFixed(1) + "%"})</text>
                         {/* Calculated the percentage of wins that were knockouts using  */}
                         <rect x="0" y="50" width={(fighterData.losses.total / totalFights * 100) + "%"} id="svg_rect" height="50"
                           fill="maroon" />
-                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.losses.total} Loss ({(fighterData.losses.total / totalFights * 100).toFixed(1) + "%"})</text>
+                        <text x="10" y="80%" font-size="60" fill="aliceblue" className='text-xs xs:text-lg font-bold'>{fighterData.losses.total} losses ({(fighterData.losses.total / totalFights * 100).toFixed(1) + "%"})</text>
                       </svg>
                     </div>
                   </div>

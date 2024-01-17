@@ -1,90 +1,100 @@
 {
     "id": 10,
     "name": "Alexander Volkanovski",
-    "nickname": "Bones",
-    "fullname": "Jon \"Bones\" Jones",
-    "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-12/EDWARDS_LEON_BELT_L_12-16.png?itok=RVcuzrpG",
-    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "record": "21-1-0",
-    "association": "Jackson-Wink MMA",
-    "age": "27",
-    "birthday": "1987-07-19",
-    "hometown": "Rochester, New York USA",
-    "nationality": "United States",
-    "location": "Endicott, New York USA",
-    "height": "6' 4\"",
-    "height_cm": "193",
-    "weight": "205",
-    "weight_kg": "93",
-    "weight_class": "Welterweight",
-    "college": "Iowa Central",
-    "degree": "Associates Degree",
+    "nickname": "The Great",
+    "fullname": "Alexander \"The Great\" Volkanovski",
+    "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2024-01/VOLKANOVSKI_ALEXANDER_BELT_L_10-21.png?itok=-8dC8fPk",
+    "bio": "Alexander Volkanovski (born 29 September 1988) is an Australian professional mixed martial artist. He currently competes in the Featherweight division of the Ultimate Fighting Championship (UFC), where he is the current UFC Featherweight Champion. He is also a former Australian Fighting Championship (AFC) Featherweight champion. Prior to his UFC debut, Volkanovski competed as a professional boxer in 2015. As of 24 October 2023, he is #3 in the UFC men's pound-for-pound rankings.",
+    "record": "29-3-0",
+    "association": "Bangtao Muay Thai & MMA Freestyle Fighting Gym",
+    "age": "35",
+    "birthday": "29/09/1988",
+    "hometown": "Wollongong, New South Wales, Australia",
+    "nationality": "Australia",
+    "location": "Windang, New South Wales, Australia",
+    "height": "5' 6\"",
+    "height_cm": "168",
+    "weight": "155",
+    "weight_kg": "70",
+    "weight_class": "Lightweight",
+    "college": "",
+    "degree": "",
     "summary": [
-        "Wrestling",
-        "jiu-jitsu",
-        "muay thai"
+        "wrestling",
+        "brazilian jiu-jitsu"
     ],
     "wins": {
-        "total": 21,
-        "knockouts": 9,
-        "submissions": 6,
-        "decisions": 6,
-        "others": 0
+        "total": 26,
+        "knockouts": 13,
+        "submissions": 3,
+        "decisions": 9,
+        "others": "ND"
     },
     "losses": {
-        "total": 1,
-        "knockouts": 0,
+        "total": 3,
+        "knockouts": 2,
         "submissions": 0,
-        "decisions": 0,
+        "decisions": 1,
         "others": 0
     },
     "strikes": {
-        "attempted": 1679,
-        "successful": 916,
-        "standing": 541,
-        "clinch": 188,
-        "ground": 187
+        "attempted": 2652,
+        "successful": 1512,
+        "standing": 1113,
+        "clinch": 141,
+        "ground": 258
     },
     "takedowns": {
-        "attempted": 64,
-        "successful": 33,
-        "submissions": 10,
-        "passes": 22,
-        "sweeps": 0
+        "attempted": 79,
+        "successful": 16,
+        "submissions": "ND",
+        "passes": "ND",
+        "sweeps": "ND"
     },
     "fights": [
         {
-            "name": "UFC 182 - Jones vs. Cormier",
-            "date": "Jan / 03 / 2015",
-            "url": "/events/UFC-182-Jones-vs-Cormier-38841",
+            "name": "UFC 294 - Makhachev vs. Volkanovski 2",
+            "date": "21 Oct 2023",
+            "url": "/events/UFC-294-Makhachev-vs-Volkanovski-2-97019",
+            "result": "loss",
+            "method": "KO (head kick and punches)",
+            "referee": "Marc Goddard",
+            "round": "1",
+            "time": "3:06",
+            "opponent": "Islam Makhachev"
+        },
+        {
+            "name": "UFC 290 - Volkanovski vs. Rodriguez",
+            "date": "08 Jul 2023",
+            "url": "/events/UFC-290-Volkanovski-vs-Rodriguez-96757",
             "result": "win",
-            "method": "Decision (Unanimous)",
+            "method": "TKO (punches)",
             "referee": "Herb Dean",
-            "round": "5",
-            "time": "5:00",
-            "opponent": "Daniel Cormier"
+            "round": "3",
+            "time": "4:19",
+            "opponent": "Yair Rodriguez"
         },
         {
-            "name": "UFC 172 - Jones vs. Teixeira",
-            "date": "Apr / 26 / 2014",
-            "url": "/events/UFC-172-Jones-vs-Teixeira-34401",
-            "result": "win",
+            "name": "UFC 284 - Makhachev vs. Volkanovski",
+            "date": "11 Feb 2023",
+            "url": "/events/UFC-284-Makhachev-vs-Volkanovski-95031",
+            "result": "loss",
             "method": "Decision (Unanimous)",
-            "referee": "Dan Miragliotta",
+            "referee": "Marc Goddard",
             "round": "5",
             "time": "5:00",
-            "opponent": "Glover Teixeira"
+            "opponent": "Islam Makhachev"
         },
         {
-            "name": "UFC 165 - Jones vs. Gustafsson",
-            "date": "Sep / 21 / 2013",
-            "url": "/events/UFC-165-Jones-vs-Gustafsson-30249",
+            "name": "UFC 276 - Adesanya vs. Cannonier",
+            "date": "03 Jul 2022",
+            "url": "/events/UFC-276-Adesanya-vs-Cannonier-91882",
             "result": "win",
             "method": "Decision (Unanimous)",
-            "referee": "John McCarthy",
+            "referee": "Marc Goddard",
             "round": "5",
             "time": "5:00",
-            "opponent": "Alexander Gustafsson"
+            "opponent": "Max Holloway"
         }
     ]
 }

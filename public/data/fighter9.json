@@ -1,34 +1,33 @@
 {
     "id": 9,
     "name": "Islam Makhachev",
-    "nickname": "Bones",
-    "fullname": "Jon \"Bones\" Jones",
-    "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-12/EDWARDS_LEON_BELT_L_12-16.png?itok=RVcuzrpG",
-    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "record": "21-1-0",
-    "association": "Jackson-Wink MMA",
-    "age": "27",
-    "birthday": "1987-07-19",
-    "hometown": "Rochester, New York USA",
-    "nationality": "United States",
-    "location": "Endicott, New York USA",
-    "height": "6' 4\"",
-    "height_cm": "193",
-    "weight": "205",
-    "weight_kg": "93",
-    "weight_class": "Welterweight",
-    "college": "Iowa Central",
-    "degree": "Associates Degree",
+    "nickname": "",
+    "fullname": "Islam \"\" Makhachev",
+    "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-10/MAKHACHEV_ISLAM_BELT_L_10-21.png?itok=glu3eHJa",
+    "bio": "Islam Ramazanovich Makhachev (born 27 October 1991) is a Russian professional mixed martial artist and former sambo competitor. He currently competes in the Lightweight division in the Ultimate Fighting Championship (UFC), where he is the current UFC Lightweight Champion. Makhachev has competed professionally since 2010, along with becoming a combat sambo world champion in 2016 and two-time Russian national champion at 74 kg (2014, 2016). As of 7 November 2023, he is #1 in the UFC men's pound-for-pound rankings.",
+    "record": "26-1-0",
+    "association": "American Kickboxing Academy",
+    "age": "32",
+    "birthday": "27/10/1991",
+    "hometown": "Makhachkala, Dagestan ASSR, Russian SFSR, Soviet Union",
+    "nationality": "Dagestan",
+    "location": "Makhachkala, Dagestan, Russia",
+    "height": "5' 10\"",
+    "height_cm": "178",
+    "weight": "155",
+    "weight_kg": "70",
+    "weight_class": "Lightweight",
+    "college": "",
+    "degree": "",
     "summary": [
-        "Wrestling",
-        "jiu-jitsu",
-        "muay thai"
+        "combat sambo",
+        "freestyle wrestling"
     ],
     "wins": {
-        "total": 21,
-        "knockouts": 9,
-        "submissions": 6,
-        "decisions": 6,
+        "total": 25,
+        "knockouts": 5,
+        "submissions": 11,
+        "decisions": 9,
         "others": 0
     },
     "losses": {
@@ -39,52 +38,63 @@
         "others": 0
     },
     "strikes": {
-        "attempted": 1679,
-        "successful": 916,
-        "standing": 541,
-        "clinch": 188,
-        "ground": 187
+        "attempted": 598,
+        "successful": 361,
+        "standing": 182,
+        "clinch": 75,
+        "ground": 104
     },
     "takedowns": {
-        "attempted": 64,
-        "successful": 33,
-        "submissions": 10,
-        "passes": 22,
-        "sweeps": 0
+        "attempted": 51,
+        "successful": 13,
+        "submissions": "ND",
+        "passes": "ND",
+        "sweeps": "ND"
     },
     "fights": [
         {
-            "name": "UFC 182 - Jones vs. Cormier",
-            "date": "Jan / 03 / 2015",
-            "url": "/events/UFC-182-Jones-vs-Cormier-38841",
+            "name": "UFC 294 - Makhachev vs. Volkanovski 2",
+            "date": "21 Oct 2023",
+            "url": "/events/UFC-294-Makhachev-vs-Volkanovski-2-97019",
+            "result": "win",
+            "method": "KO (head kick and punches)",
+            "referee": "Marc Goddard",
+            "round": "1",
+            "time": "3:06",
+            "opponent": "Alexander Volkanovski"
+        },
+        {
+            "name": "UFC 284 - Makhachev vs. Volkanovski",
+            "date": "11 Feb 2023",
+            "url": "/events/UFC-284-Makhachev-vs-Volkanovski-95031",
             "result": "win",
             "method": "Decision (Unanimous)",
+            "referee": "Marc Goddard",
+            "round": "5",
+            "time": "5:00",
+            "opponent": "Alexander Volkanovski"
+        },
+        {
+            "name": "UFC 280 - Oliveira vs. Makhachev",
+            "date": "22 Oct 2022",
+            "url": "/events/UFC-280-Oliveira-vs-Makhachev-92490",
+            "result": "win",
+            "method": "Submission (arm-triangle choke)",
+            "referee": "Jason Herzog",
+            "round": "2",
+            "time": "3:16",
+            "opponent": "Charles Oliveira"
+        },
+        {
+            "name": "UFC Fight Night 202 - Makhachev vs. Green",
+            "date": "26 Feb 2022",
+            "url": "/events/UFC-Fight-Night-202-Makhachev-vs-Green-90846",
+            "result": "win",
+            "method": "TKO (punches)",
             "referee": "Herb Dean",
-            "round": "5",
-            "time": "5:00",
-            "opponent": "Daniel Cormier"
-        },
-        {
-            "name": "UFC 172 - Jones vs. Teixeira",
-            "date": "Apr / 26 / 2014",
-            "url": "/events/UFC-172-Jones-vs-Teixeira-34401",
-            "result": "win",
-            "method": "Decision (Unanimous)",
-            "referee": "Dan Miragliotta",
-            "round": "5",
-            "time": "5:00",
-            "opponent": "Glover Teixeira"
-        },
-        {
-            "name": "UFC 165 - Jones vs. Gustafsson",
-            "date": "Sep / 21 / 2013",
-            "url": "/events/UFC-165-Jones-vs-Gustafsson-30249",
-            "result": "win",
-            "method": "Decision (Unanimous)",
-            "referee": "John McCarthy",
-            "round": "5",
-            "time": "5:00",
-            "opponent": "Alexander Gustafsson"
+            "round": "1",
+            "time": "3:23",
+            "opponent": "Bobby Green"
         }
     ]
 }

@@ -1,90 +1,101 @@
 {
     "id": 8,
     "name": "Leon Edwards",
-    "nickname": "Bones",
-    "fullname": "Jon \"Bones\" Jones",
+    "nickname": "Rocky",
+    "fullname": "Leon \"Rocky\" Edwards",
     "img": "https://dmxg5wxfqgb4u.cloudfront.net/styles/athlete_bio_full_body/s3/2023-12/EDWARDS_LEON_BELT_L_12-16.png?itok=RVcuzrpG",
-    "bio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    "record": "21-1-0",
-    "association": "Jackson-Wink MMA",
-    "age": "27",
-    "birthday": "1987-07-19",
-    "hometown": "Rochester, New York USA",
-    "nationality": "United States",
-    "location": "Endicott, New York USA",
-    "height": "6' 4\"",
-    "height_cm": "193",
-    "weight": "205",
-    "weight_kg": "93",
+    "bio": "Leon Edwards (born 25 August 1991) is an English professional mixed martial artist. He currently competes in the Welterweight division in the Ultimate Fighting Championship (UFC), where he is the current UFC Welterweight Champion. A professional competitor since 2011, Edwards formerly competed for BAMMA, where he was the BAMMA Welterweight Champion. As of 7 March 2023, he is #4 in the UFC men's pound-for-pound rankings.",
+    "record": "21-3-0",
+    "association": "Team Renegade BJJ & MMA",
+    "age": "32",
+    "birthday": "25/08/1991",
+    "hometown": "Kingston, Jamaica",
+    "nationality": "UK",
+    "location": "Birmingham, England",
+    "height": "6' 0\"",
+    "height_cm": "183",
+    "weight": "170",
+    "weight_kg": "77",
     "weight_class": "Welterweight",
-    "college": "Iowa Central",
-    "degree": "Associates Degree",
+    "college": "",
+    "degree": "",
     "summary": [
-        "Wrestling",
-        "jiu-jitsu",
-        "muay thai"
+        "wrestling",
+        "brazilian jiu-jitsu",
+        "kickboxing"
     ],
     "wins": {
-        "total": 21,
-        "knockouts": 9,
-        "submissions": 6,
-        "decisions": 6,
+        "total": 22,
+        "knockouts": 7,
+        "submissions": 3,
+        "decisions": 12,
         "others": 0
     },
     "losses": {
-        "total": 1,
+        "total": 3,
         "knockouts": 0,
         "submissions": 0,
-        "decisions": 0,
-        "others": 0
+        "decisions": 2,
+        "others": 1
     },
     "strikes": {
-        "attempted": 1679,
-        "successful": 916,
-        "standing": 541,
-        "clinch": 188,
-        "ground": 187
+        "attempted": 1483,
+        "successful": 791,
+        "standing": 605,
+        "clinch": 100,
+        "ground": 86
     },
     "takedowns": {
-        "attempted": 64,
-        "successful": 33,
-        "submissions": 10,
-        "passes": 22,
-        "sweeps": 0
+        "attempted": 69,
+        "successful": 12,
+        "submissions": "ND",
+        "passes": "ND",
+        "sweeps": "ND"
     },
     "fights": [
         {
-            "name": "UFC 182 - Jones vs. Cormier",
-            "date": "Jan / 03 / 2015",
-            "url": "/events/UFC-182-Jones-vs-Cormier-38841",
+            "name": "UFC 296 - Edwards vs. Covington",
+            "date": "16 Dec 2023",
+            "url": "/events/UFC-296-Edwards-vs-Covington-98050",
             "result": "win",
-            "method": "Decision (Unanimous)",
+            "method": "Decision (unanimous)",
             "referee": "Herb Dean",
             "round": "5",
             "time": "5:00",
-            "opponent": "Daniel Cormier"
+            "opponent": "Colby Covington"
         },
         {
-            "name": "UFC 172 - Jones vs. Teixeira",
-            "date": "Apr / 26 / 2014",
-            "url": "/events/UFC-172-Jones-vs-Teixeira-34401",
+            "name": "UFC 286 - Edwards vs. Usman 3",
+            "date": "18 Mar 2023",
+            "url": "/events/UFC-286-Edwards-vs-Usman-3-95795",
             "result": "win",
-            "method": "Decision (Unanimous)",
-            "referee": "Dan Miragliotta",
+            "method": "Decision (majority)",
+            "referee": "Herb Dean",
             "round": "5",
             "time": "5:00",
-            "opponent": "Glover Teixeira"
+            "opponent": "Kamaru Usman"
         },
         {
-            "name": "UFC 165 - Jones vs. Gustafsson",
-            "date": "Sep / 21 / 2013",
-            "url": "/events/UFC-165-Jones-vs-Gustafsson-30249",
+            "name": "UFC 278 - Usman vs. Edwards 2",
+            "date": "20 Aug 2022",
+            "url": "/events/UFC-278-Usman-vs-Edwards-2-93201",
             "result": "win",
-            "method": "Decision (Unanimous)",
-            "referee": "John McCarthy",
+            "method": "KO (head kick)",
+            "referee": "Herb Dean",
+            "round": "5",
+            "time": "4:04",
+            "opponent": "Kamaru Usman"
+        },
+        {
+            "name": "UFC 263 - Adesanya vs. Vettori 2",
+            "date": "12 Jun 2021",
+            "url": "/events/UFC-263-Adesanya-vs-Vettori-2-88760",
+            "result": "win",
+            "method": "Decision (unanimous)",
+            "referee": "Herb Dean",
             "round": "5",
             "time": "5:00",
-            "opponent": "Alexander Gustafsson"
+            "opponent": "Nate Diaz"
         }
     ]
 }
