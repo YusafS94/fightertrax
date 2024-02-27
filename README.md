@@ -1,6 +1,6 @@
 # FighterTrax
 
-This is an app created by me, Yusaf Saddiq, as part of the assignment for the Advanced Front-End Web Development module in year 4 of my Web Programming course at the University of Huddersfield.
+This is an app created by me, Yusaf Saddiq, as part of the assignment for the Advanced Front-End Web Development module in year 4 of my Web Programming course at the University of Huddersfield. For this app I achieved a 90% grade.
 
 ## How to start app
 
